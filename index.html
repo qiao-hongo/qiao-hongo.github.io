@@ -378,33 +378,6 @@
 		</script>
         
 
-<script type="text/javascript">
-	var url = window.location.href; //获取完整路径
-	console.log(url);
-	
-	// 如果不是预览，才做下面的操作
-	if (url.indexOf("previewHtml.do") < 0) {
-		if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i))) {
-			var newUrl = url.replace("www", "m");
-			var newUrl1 = newUrl.replace("html", "htm");
-			window.location.href = newUrl1;
-
-		} else {
-			var path = url.split("?")[0];
-			var lastStr = path.slice(-1)
-			
-			console.log(path,lastStr);
-
-			if (lastStr === "l") {
-
-			} else {
-
-				window.location.href = path + 'l';
-			}
-		}
-	}
-</script>
-
 <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script><br>
 
 
@@ -424,45 +397,6 @@
             //    $("meta[itemprop='name']").attr("content", $scope.detailData.title);
             //    $("meta[itemprop='description']").attr("content", $scope.detailData.title);
             //    $("meta[itemprop='image']").attr("content", wxShareImg);
-	                    $.ajax({
-                    url: xyUrl + "wx/signature",
-                    data: { url: wxShareUrl, siteId: 4},
-                    dataType: 'jsonp',
-                    success: function (dataShare) {
-					
-                        var shareData = {
-                            title: "<p>2023年香港仲裁周|“两地保全安排四周年：回顾与展望”</p><p>研讨会在香港举办</p>",
-                            desc: "",
-                            link: wxShareUrlOrig,//详情页带#
-                            imgUrl: wxShareImg
-                        };
-                        wx.config({
-									
-                            appId: dataShare.appid,
-                            nonceStr: dataShare.noncestr,  // 必填，生成签名的随机串
-                            timestamp: dataShare.timestamp,  // 必填，生成签名的时间戳
-                            signature: dataShare.signature, // 必填，签名
-                            jsApiList: [
-                                "onMenuShareTimeline",
-                                "onMenuShareAppMessage",
-                        
-                            ]
-						
-                        });
-                        wx.ready(function () {
-						
-                            wx.onMenuShareTimeline(shareData);
-                            wx.onMenuShareAppMessage(shareData);
-             
-                        });
-                    },
-                    error: function (dataShare) {
-                 
-					}
-                });
-                wx.error(function (res) {
-					
-                });
 
 
 </script>
